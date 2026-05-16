@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Clothing - Tingkatkan Gaya Anda</title>
+    <!-- Memuat Tailwind CSS untuk styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Memuat Font Inter dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Memuat Phosphor Icons untuk ikon-ikon menarik -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            200: '#eaddd7',
+                            300: '#e0cec7',
+                            400: '#d2bab0',
+                            500: '#a38a80', // Warna utama elegan (misal: taupe/coklat keabuan)
+                            600: '#8c7369',
+                            700: '#6b574f',
+                            800: '#4a3c36',
+                            900: '#271f1d',
+                            accent: '#ef4444' // Merah untuk urgensi/CTA
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Animasi kustom untuk elemen yang muncul */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Menyembunyikan scrollbar tapi tetap bisa scroll untuk carousel testimoni */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Efek pulse halus untuk tombol utama */
+        .btn-pulse {
+            animation: pulse-shadow 2s infinite;
+        }
+        
+        @keyframes pulse-shadow {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+    </style>
+</head>
+<body class="font-sans text-brand-900 bg-brand-50 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <!-- Logo Placeholder -->
+                    <span class="font-bold text-2xl tracking-tighter text-brand-800 uppercase">AURA<span class="text-brand-accent">.</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#koleksi" class="text-brand-800 hover:text-brand-accent transition-colors font-medium">Koleksi</a>
+                    <a href="#alasan" class="text-brand-800 hover:text-brand-accent transition-colors font-medium">Tentang</a>
+                    <a href="#testimoni" class="text-brand-800 hover:text-brand-accent transition-colors font-medium">Ulasan</a>
+                    <a href="#penawaran" class="bg-brand-accent text-white px-6 py-2 rounded-full font-bold hover:bg-red-600 transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5">Beli Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. HEADLINE (Hero Section) -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden flex items-center min-h-screen">
+        <!-- Background Image dengan Overlay Gradient -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=2000" alt="Model Fashion" class="w-full h-full object-cover object-center opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-50 via-brand-50/90 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="lg:w-2/3">
+                <span class="inline-block py-1 px-3 rounded-full bg-brand-200 text-brand-800 text-sm font-semibold tracking-wide mb-4 fade-in-up">🌟 KOLEKSI TERBARU 2026</span>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-brand-900 leading-[1.1] mb-6 fade-in-up" style="animation-delay: 0.1s;">
+                    Berhenti Memakai Pakaian yang <span class="text-brand-accent">Biasa Saja.</span>
+                </h1>
+                <p class="mt-4 text-xl md:text-2xl text-brand-700 max-w-2xl font-light leading-relaxed mb-10 fade-in-up" style="animation-delay: 0.2s;">
+                    Tingkatkan kepercayaan diri Anda setiap hari dengan koleksi eksklusif kami. Desain premium, kenyamanan maksimal, tanpa harus menguras dompet.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 fade-in-up" style="animation-delay: 0.3s;">
+                    <a href="#penawaran" class="btn-pulse flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-full text-white bg-brand-accent hover:bg-red-600 transition-all shadow-xl hover:shadow-2xl w-full sm:w-auto text-center">
+                        Lihat Penawaran Terbatas <i class="ph-bold ph-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#koleksi" class="flex items-center justify-center px-8 py-4 border-2 border-brand-800 text-lg font-bold rounded-full text-brand-800 bg-transparent hover:bg-brand-800 hover:text-white transition-all w-full sm:w-auto text-center">
+                        Jelajahi Koleksi
+                    </a>
+                </div>
+                
+                <div class="mt-10 flex items-center gap-4 fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="flex -space-x-2">
+                        <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/12.jpg" alt="User">
+                        <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                        <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-brand-200 flex items-center justify-center text-xs font-bold text-brand-800">+2k</div>
+                    </div>
+                    <p class="text-sm text-brand-700 font-medium">Dipercaya oleh 2,000+ pelanggan puas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. OPENING (Menyentuh Rasa Sakit / Pain Point) -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-8">Pernahkah Anda merasa...</h2>
+            
+            <div class="grid sm:grid-cols-3 gap-8 text-left mt-12">
+                <div class="bg-brand-50 p-6 rounded-2xl">
+                    <div class="w-12 h-12 bg-red-100 text-brand-accent rounded-full flex items-center justify-center mb-4">
+                        <i class="ph-bold ph-x-circle text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Baju Cepat Rusak?</h3>
+                    <p class="text-brand-600 text-sm">Baru dicuci beberapa kali, warnanya pudar atau jahitannya lepas.</p>
+                </div>
+                <div class="bg-brand-50 p-6 rounded-2xl">
+                    <div class="w-12 h-12 bg-red-100 text-brand-accent rounded-full flex items-center justify-center mb-4">
+                        <i class="ph-bold ph-x-circle text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Tidak Nyaman Dipakai?</h3>
+                    <p class="text-brand-600 text-sm">Bahan panas, gatal, atau potongannya (cutting) aneh dan tidak pas di badan.</p>
+                </div>
+                <div class="bg-brand-50 p-6 rounded-2xl">
+                    <div class="w-12 h-12 bg-red-100 text-brand-accent rounded-full flex items-center justify-center mb-4">
+                        <i class="ph-bold ph-x-circle text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Mati Gaya?</h3>
+                    <p class="text-brand-600 text-sm">Lemari penuh, tapi selalu merasa "tidak punya baju" karena desain yang membosankan.</p>
+                </div>
+            </div>
+            
+            <p class="text-xl md:text-2xl font-medium text-brand-800 mt-12 italic">
+                "Jika ya, maka Anda berada di tempat yang tepat. Kami merancang AURA untuk mengakhiri masalah tersebut."
+            </p>
+        </div>
+    </section>
+
+    <!-- 3. BENEFIT (Keuntungan Utama) -->
+    <section id="koleksi" class="py-24 bg-brand-900 text-white relative overflow-hidden">
+        <!-- Dekorasi Latar -->
+        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-brand-800 rounded-full opacity-50 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-brand-700 rounded-full opacity-50 blur-3xl"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">Rasakan Perbedaannya Saat Pertama Kali Dipakai</h2>
+                <p class="text-brand-200 text-lg">Inilah yang akan Anda dapatkan ketika beralih ke koleksi kami.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Benefit 1 -->
+                <div class="bg-brand-800/50 backdrop-blur-sm p-8 rounded-3xl border border-brand-700 hover:border-brand-500 transition-colors group">
+                    <div class="w-14 h-14 bg-brand-700 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-accent transition-colors">
+                        <i class="ph-bold ph-sparkle text-2xl text-brand-100"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Tampil Lebih Menarik</h3>
+                    <p class="text-brand-300 text-sm leading-relaxed">Cutting pola yang dirancang khusus menyesuaikan bentuk tubuh Asia, membuat postur Anda terlihat lebih proporsional seketika.</p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="bg-brand-800/50 backdrop-blur-sm p-8 rounded-3xl border border-brand-700 hover:border-brand-500 transition-colors group">
+                    <div class="w-14 h-14 bg-brand-700 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-accent transition-colors">
+                        <i class="ph-bold ph-wind text-2xl text-brand-100"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Sejuk Seharian</h3>
+                    <p class="text-brand-300 text-sm leading-relaxed">Terbuat dari katun bambu organik pilihan. Menyerap keringat 3x lebih cepat dari katun biasa. Bebas gerah meski cuaca panas.</p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="bg-brand-800/50 backdrop-blur-sm p-8 rounded-3xl border border-brand-700 hover:border-brand-500 transition-colors group">
+                    <div class="w-14 h-14 bg-brand-700 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-accent transition-colors">
+                        <i class="ph-bold ph-shield-check text-2xl text-brand-100"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Tahan Bertahun-tahun</h3>
+                    <p class="text-brand-300 text-sm leading-relaxed">Jahitan ganda super rapi (standard ekspor) dan teknik pewarnaan khusus yang menjamin warna tidak pudar meski dicuci puluhan kali.</p>
+                </div>
+
+                <!-- Benefit 4 -->
+                <div class="bg-brand-800/50 backdrop-blur-sm p-8 rounded-3xl border border-brand-700 hover:border-brand-500 transition-colors group">
+                    <div class="w-14 h-14 bg-brand-700 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-accent transition-colors">
+                        <i class="ph-bold ph-diamonds-four text-2xl text-brand-100"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Desain Eksklusif</h3>
+                    <p class="text-brand-300 text-sm leading-relaxed">Diproduksi dalam jumlah terbatas (limited edition). Anda tidak akan mudah 'kembaran' baju dengan orang lain di jalan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ALASAN (Mengapa Memilih Kami / Otoritas) -->
+    <section id="alasan" class="py-20 bg-brand-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 relative">
+                    <!-- Grid Gambar Estetik -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=600" alt="Detail Jahitan" class="rounded-2xl shadow-lg mt-8 object-cover h-64 w-full">
+                        <img src="https://images.unsplash.com/photo-1489987707023-afc6630f5761?auto=format&fit=crop&q=80&w=600" alt="Bahan Kain" class="rounded-2xl shadow-lg object-cover h-64 w-full">
+                    </div>
+                    <!-- Badge Kualitas -->
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl flex items-center gap-3">
+                        <div class="text-brand-accent">
+                            <i class="ph-fill ph-seal-check text-4xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-brand-500 font-bold uppercase tracking-wider">Garansi Kualitas</p>
+                            <p class="font-bold text-brand-900">100% Premium Material</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-6">Mengapa AURA Berbeda dari Brand Lain?</h2>
+                    
+                    <ul class="space-y-6">
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 mt-1">
+                                <i class="ph-bold ph-check-circle text-brand-500 text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-brand-900">Bukan Fast Fashion</h4>
+                                <p class="text-brand-700 text-sm mt-1">Kami lebih mementingkan kualitas daripada kuantitas. Proses produksi kami memperhatikan detail terkecil.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 mt-1">
+                                <i class="ph-bold ph-check-circle text-brand-500 text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-brand-900">Harga Jujur Pabrik</h4>
+                                <p class="text-brand-700 text-sm mt-1">Tanpa biaya perantara (middleman). Anda mendapatkan kualitas mall seharga ratusan ribu dengan harga yang jauh lebih masuk akal karena kami produksi sendiri.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 mt-1">
+                                <i class="ph-bold ph-check-circle text-brand-500 text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-brand-900">Dukung Penjahit Lokal</h4>
+                                <p class="text-brand-700 text-sm mt-1">100% dibuat di Indonesia oleh para pengrajin garmen berpengalaman yang kami bayar dengan sangat layak.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. TESTIMONI (Social Proof) -->
+    <section id="testimoni" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-4">Apa Kata Mereka yang Sudah Mencoba?</h2>
+                <div class="flex justify-center text-yellow-400 text-2xl gap-1">
+                    <i class="ph-fill ph-star"></i>
+                    <i class="ph-fill ph-star"></i>
+                    <i class="ph-fill ph-star"></i>
+                    <i class="ph-fill ph-star"></i>
+                    <i class="ph-fill ph-star"></i>
+                </div>
+                <p class="mt-4 text-brand-600 font-medium">Rating 4.9/5 dari 1,500+ Review</p>
+            </div>
+
+            <!-- Kontainer Scroll Horizontal untuk Testimoni -->
+            <div class="flex overflow-x-auto gap-6 pb-8 snap-x no-scrollbar" id="testimonial-container">
+                
+                <!-- Card Testimoni 1 -->
+                <div class="min-w-[300px] md:min-w-[400px] bg-brand-50 p-8 rounded-3xl snap-center shrink-0 shadow-sm border border-brand-100">
+                    <div class="flex items-center mb-4 gap-4">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Budi" class="w-14 h-14 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-brand-900">Budi Santoso</h4>
+                            <p class="text-xs text-brand-500">Pekerja Kantoran</p>
+                        </div>
+                    </div>
+                    <p class="text-brand-700 italic">"Gila sih bahannya! Dipakai ngantor dari pagi sampai malam ngga bau keringat sama sekali. Cuttingannya juga pas di badan agak buncit saya, bikin kelihatan lebih langsing. Bakal beli warna lain!"</p>
+                </div>
+
+                <!-- Card Testimoni 2 -->
+                <div class="min-w-[300px] md:min-w-[400px] bg-brand-50 p-8 rounded-3xl snap-center shrink-0 shadow-sm border border-brand-100">
+                    <div class="flex items-center mb-4 gap-4">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Siska" class="w-14 h-14 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-brand-900">Siska Pratiwi</h4>
+                            <p class="text-xs text-brand-500">Mahasiswi</p>
+                        </div>
+                    </div>
+                    <p class="text-brand-700 italic">"Sering kecewa beli baju online karena foto sama aslinya beda bahan. Tapi AURA beda, aslinya malah lebih bagus! Bahannya jatuh dan premium banget. Packaging-nya juga niat parah."</p>
+                </div>
+
+                <!-- Card Testimoni 3 -->
+                <div class="min-w-[300px] md:min-w-[400px] bg-brand-50 p-8 rounded-3xl snap-center shrink-0 shadow-sm border border-brand-100">
+                    <div class="flex items-center mb-4 gap-4">
+                        <img src="https://randomuser.me/api/portraits/men/43.jpg" alt="Dimas" class="w-14 h-14 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-brand-900">Dimas Anggara</h4>
+                            <p class="text-xs text-brand-500">Freelancer</p>
+                        </div>
+                    </div>
+                    <p class="text-brand-700 italic">"Udah cuci puluhan kali pake mesin cuci, kerahnya ngga melar sama sekali dong! Warnanya juga masih pekat kaya baru beli. Worth every penny lah pokoknya."</p>
+                </div>
+
+                <!-- Card Testimoni 4 -->
+                <div class="min-w-[300px] md:min-w-[400px] bg-brand-50 p-8 rounded-3xl snap-center shrink-0 shadow-sm border border-brand-100">
+                    <div class="flex items-center mb-4 gap-4">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Reza" class="w-14 h-14 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-brand-900">Reza Pahlevi</h4>
+                            <p class="text-xs text-brand-500">Pengusaha</p>
+                        </div>
+                    </div>
+                    <p class="text-brand-700 italic">"Desainnya simpel tapi kelihatan mahal. Sering ditanya temen beli di mana kalau lagi nongkrong pake baju ini. Highly recommended!"</p>
+                </div>
+            </div>
+            
+            <div class="flex justify-center gap-2 mt-6">
+                <button onclick="scrollTestimoni(-300)" class="w-10 h-10 rounded-full bg-brand-100 flex items-center justify-center hover:bg-brand-200 transition-colors text-brand-800">
+                    <i class="ph-bold ph-caret-left"></i>
+                </button>
+                <button onclick="scrollTestimoni(300)" class="w-10 h-10 rounded-full bg-brand-100 flex items-center justify-center hover:bg-brand-200 transition-colors text-brand-800">
+                    <i class="ph-bold ph-caret-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. URGENSI, 7. BONUS, 8. CTA, 9. GARANSI -->
+    <section id="penawaran" class="py-24 bg-brand-900 text-white relative">
+        <!-- Aksen Pola Background -->
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 30px 30px;"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <!-- Box Penawaran Utama -->
+            <div class="bg-white rounded-3xl p-1 shadow-2xl relative">
+                <!-- Urgensi Banner Atas -->
+                <div class="bg-brand-accent text-white text-center py-2 rounded-t-3xl font-bold tracking-wide text-sm flex items-center justify-center gap-2">
+                    <i class="ph-fill ph-clock-countdown text-lg"></i>
+                    PROMO TERBATAS: BERAKHIR HARI INI JAM 23:59
+                </div>
+                
+                <div class="p-8 md:p-12 text-center">
+                    <h2 class="text-3xl md:text-5xl font-black text-brand-900 mb-4">Bundling "Style Upgrade"</h2>
+                    <p class="text-brand-600 mb-8 font-medium">Beli 2 Pcs, Lebih Hemat!</p>
+                    
+                    <!-- Harga coret -->
+                    <div class="flex justify-center items-center gap-4 mb-6">
+                        <span class="text-2xl text-brand-400 line-through font-medium">Rp 450.000</span>
+                        <span class="text-5xl font-black text-brand-accent">Rp 299.000</span>
+                    </div>
+
+                    <!-- Bonus Box -->
+                    <div class="bg-brand-50 border-2 border-brand-200 rounded-2xl p-6 mb-8 text-left max-w-lg mx-auto">
+                        <h3 class="font-bold text-brand-900 mb-3 flex items-center gap-2">
+                            <i class="ph-fill ph-gift text-brand-accent text-xl"></i> + BONUS EKSKLUSIF
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-brand-700 text-sm font-medium">
+                                <i class="ph-bold ph-check text-green-500 mt-0.5"></i>
+                                <span><strong>FREE Ongkir</strong> ke Seluruh Indonesia (Senilai Rp 30.000)</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-brand-700 text-sm font-medium">
+                                <i class="ph-bold ph-check text-green-500 mt-0.5"></i>
+                                <span><strong>Premium Totebag</strong> AURA Edition (Senilai Rp 50.000)</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-brand-700 text-sm font-medium">
+                                <i class="ph-bold ph-check text-green-500 mt-0.5"></i>
+                                <span>Voucher Diskon 20% untuk pembelian berikutnya.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <button class="w-full md:w-auto btn-pulse bg-brand-accent hover:bg-red-600 text-white text-xl md:text-2xl font-black py-5 px-12 rounded-full transition-all shadow-[0_10px_30px_rgba(239,68,68,0.4)] hover:shadow-[0_15px_40px_rgba(239,68,68,0.6)] transform hover:-translate-y-1 flex items-center justify-center mx-auto gap-3">
+                        AMBIL PROMO SEKARANG
+                        <i class="ph-bold ph-shopping-cart"></i>
+                    </button>
+                    
+                    <p class="text-sm text-brand-500 mt-4 font-medium flex items-center justify-center gap-2">
+                        <i class="ph-fill ph-lock-key"></i> Pembayaran 100% Aman & Terenkripsi
+                    </p>
+
+                    <!-- Garansi -->
+                    <div class="mt-10 pt-8 border-t border-brand-100">
+                        <div class="flex flex-col md:flex-row items-center justify-center gap-6 text-left">
+                            <div class="w-20 h-20 shrink-0 bg-yellow-50 rounded-full flex items-center justify-center border-4 border-yellow-100">
+                                <i class="ph-fill ph-shield-check text-4xl text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-black text-xl text-brand-900 mb-1">Garansi 100% Uang Kembali</h3>
+                                <p class="text-brand-600 text-sm">
+                                    Tidak suka dengan bahannya? Jahitan lepas? Atau ukuran tidak pas? 
+                                    <strong>Kembalikan saja!</strong> Kami akan ganti dengan yang baru atau kembalikan uang Anda 100% tanpa ditanya. Risiko ada di tangan kami!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. NB (Nota Bene) & Footer -->
+    <footer class="bg-brand-900 text-brand-300 py-12 border-t border-brand-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- NB Section -->
+            <div class="bg-brand-800/50 p-6 rounded-2xl mb-12 border border-brand-700/50">
+                <p class="font-bold text-brand-100 mb-2">P.S (NB):</p>
+                <p class="text-sm leading-relaxed">
+                    Stok promo bundling ini <strong>sangat terbatas</strong>. Kami hanya memproduksi 500 pcs untuk batch kali ini dan biasanya habis dalam waktu kurang dari 3 hari. Jangan tunggu sampai kehabisan warna favorit Anda dan harus menunggu produksi bulan depan dengan harga normal. Pesan sekarang mumpung masih ada promo gratis ongkir!
+                </p>
+            </div>
+
+            <!-- Simple Footer Links -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-2xl font-black text-white tracking-tighter">AURA<span class="text-brand-accent">.</span></div>
+                
+                <div class="flex gap-6 text-sm">
+                    <a href="#" class="hover:text-white transition-colors">Syarat & Ketentuan</a>
+                    <a href="#" class="hover:text-white transition-colors">Kebijakan Privasi</a>
+                    <a href="#" class="hover:text-white transition-colors">Kontak Kami</a>
+                </div>
+
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-brand-800 flex items-center justify-center hover:bg-brand-700 hover:text-white transition-all">
+                        <i class="ph-logo ph-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-brand-800 flex items-center justify-center hover:bg-brand-700 hover:text-white transition-all">
+                        <i class="ph-logo ph-tiktok text-xl"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-brand-800 flex items-center justify-center hover:bg-brand-700 hover:text-white transition-all">
+                        <i class="ph-logo ph-whatsapp text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="text-center mt-12 text-xs text-brand-500">
+                &copy; 2026 AURA Clothing. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Efek transparan pada Navbar saat scroll
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+                navbar.classList.remove('bg-transparent', 'py-4');
+            } else {
+                navbar.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+                navbar.classList.add('bg-transparent', 'py-4');
+            }
+        });
+
+        // Inisialisasi awal tampilan navbar
+        if (window.scrollY <= 50) {
+            navbar.classList.add('py-4');
+        }
+
+        // Fungsi scroll horizontal untuk Testimoni
+        function scrollTestimoni(amount) {
+            const container = document.getElementById('testimonial-container');
+            container.scrollBy({
+                left: amount,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Sedikit animasi saat elemen masuk viewport (opsional, basic)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Kamu bisa menambahkan class .animate-on-scroll ke elemen yang ingin dianimasikan
+        // document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
